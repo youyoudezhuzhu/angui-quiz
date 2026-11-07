@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>题库导入包 · 安规刷题</title>
+<style>
+:root{--bg:#eef2f7;--surface:#fff;--line:#e2e8f0;--text:#0f172a;--soft:#475569;--mute:#94a3b8;--primary:#2563eb;--shadow:0 1px 2px rgba(15,23,42,.04),0 16px 40px -18px rgba(15,23,42,.22);--font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+*{box-sizing:border-box}body{margin:0;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65}
+a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.top-inner{max-width:920px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:14px}
+.top-inner .brand{font-weight:800;color:var(--text)}
+.top-inner a.back{margin-left:auto;font-size:13px;font-weight:600;color:var(--soft)}
+.wrap{max-width:920px;margin:0 auto;padding:34px 20px 60px}
+h1{font-size:32px;margin:0 0 8px}
+.lead{color:var(--soft);font-size:15px;margin:0 0 22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:20px 22px;margin-bottom:16px}
+.card h2{font-size:19px;margin:0 0 8px}
+.card p{color:var(--soft);font-size:14px;margin:0 0 12px}
+.links{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600}
+.links a{color:var(--text)}
+.links a:hover{color:var(--primary)}
+.tip{font-size:13px;color:var(--mute);margin-top:10px}
+img{max-width:100%;border-radius:12px;border:1px solid var(--line);display:block;margin:12px 0}
+code{background:#f1f5f9;padding:1px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner"><span class="brand">安规刷题 · 导入题库</span><a class="back" href="../">← 返回项目首页</a></div></header>
+<main class="wrap">
+  <h1>题库导入包</h1>
+  <p class="lead">按刷题 App 的导入格式生成，117 道选择题；另附 2 道问答题参考答案。</p>
+
+  <section class="card">
+    <h2>Excel 格式（推荐）</h2>
+    <p>第一行是列名：<b>考题题目 / 考题答案（ABCDE…） / 选项A / 选项B / 选项C / 选项D</b>，第二行起是题目；答案列填字母。</p>
+    <img src="preview.png" alt="Excel 题库预览">
+    <div class="links">
+      <a href="安规题库_选择题_导入.xlsx">下载 Excel 题库（117 道选择题）</a>
+      <a href="安规题库导入包.zip">下载全部文件（zip）</a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>TXT 格式</h2>
+    <p>一行一个 JSON，UTF-8 编码，字段 <code>q</code> / <code>a</code> / <code>ans</code>：</p>
+    <p><code>{"q":"题干","a":["选项A","选项B","选项C","选项D"],"ans":"A"}</code></p>
+    <div class="links"><a href="安规题库_选择题_导入.txt">下载 TXT 题库</a></div>
+  </section>
+
+  <section class="card">
+    <h2>问答题（格式不支持）</h2>
+    <p>该导入格式只支持 A-G 选择题答案，2 道问答题无法导入，参考答案单独提供。</p>
+    <div class="links"><a href="问答题_参考答案.txt">查看问答题参考答案</a></div>
+    <p class="tip">14 道读图题的原题配图缺失，题干末尾已标注图片文件名，可在 App 中删除这些行。</p>
+  </section>
+
+  <section class="card">
+    <h2>格式说明</h2>
+    <div class="links"><a href="导入说明.md">导入说明.md</a></div>
+    <p class="tip">导入方法：微信发送文件给自己 → 在聊天里点开 →「用其他应用打开」→ 选择刷题 App。</p>
+  </section>
+</main>
+</body>
+</html>
