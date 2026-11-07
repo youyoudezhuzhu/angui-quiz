@@ -1,7 +1,5 @@
 # 安规刷题（变电检修 · 安全规程题库）
 
-> **当前仓库为私密（private）。** GitHub Free 计划不支持私有仓库的 GitHub Pages，因此文中 `youyoudezhuzhu.github.io/angui-quiz/` 在线地址当前不可用；网页可在本地运行，APK / 手册 / 导入包仍可从本仓库文件或 Releases（需登录有权限的账号）获取。
-
 一套题库，四种用法：**网页刷题、安卓通知栏搜题、快速记忆手册、Excel 导入包**。
 
 - **在线入口**：<https://youyoudezhuzhu.github.io/angui-quiz/>
