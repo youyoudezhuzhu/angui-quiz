@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f172a">
+<title>安规刷题 · 变电检修安全规程题库</title>
+<meta name="description" content="119 道变电检修/安规题：在线刷题、安卓通知栏搜题 App、速记手册、Excel 导入题库。">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --bg:#eef2f7; --surface:#fff; --surface-2:#f8fafc; --line:#e2e8f0;
+  --text:#0f172a; --soft:#475569; --mute:#94a3b8;
+  --primary:#2563eb; --primary-2:#0ea5e9; --ok:#059669;
+  --shadow:0 1px 2px rgba(15,23,42,.04),0 16px 40px -18px rgba(15,23,42,.22);
+  --radius:20px;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:var(--font);color:var(--text);background:var(--bg);
+  background-image:radial-gradient(1200px 600px at 8% -10%,#dbeafe 0%,transparent 62%),
+                   radial-gradient(900px 500px at 105% 0%,#ccfbf1 0%,transparent 58%);
+  background-attachment:fixed;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,p{margin:0}
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;color:var(--text);text-decoration:none}
+.brand .mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#2563eb,#0ea5e9);
+  display:grid;place-items:center;color:#fff;font-size:18px;box-shadow:0 6px 16px -6px rgba(37,99,235,.7)}
+.nav-links{margin-left:auto;display:flex;gap:18px;font-size:14px;font-weight:600;color:var(--soft);flex-wrap:wrap}
+.nav-links a{color:var(--soft);text-decoration:none}
+.nav-links a:hover{color:var(--primary);text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:46px 22px 70px}
+.hero{text-align:center;padding:20px 0 42px}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:2px;color:var(--primary);
+  background:#dbeafe;border:1px solid #bfdbfe;border-radius:999px;padding:4px 14px}
+.hero h1{font-size:46px;line-height:1.2;margin:16px 0 10px;letter-spacing:1px}
+.hero h1 span{background:linear-gradient(90deg,#2563eb,#0d9488);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:16px;color:var(--soft);max-width:680px;margin:0 auto}
+.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:26px 0 28px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 18px;min-width:112px;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:22px;line-height:1.2}
+.stat span{font-size:12px;color:var(--mute);font-weight:600}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:11px 20px;font-weight:700;font-size:15px;
+  border:1px solid transparent;text-decoration:none;transition:.15s}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn-primary{background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;box-shadow:0 10px 24px -10px rgba(37,99,235,.75)}
+.btn-ghost{background:var(--surface);border-color:var(--line);color:var(--text)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:46px 0 18px}
+.section-head h2{font-size:26px}
+.section-head p{color:var(--soft);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+  overflow:hidden;display:flex;flex-direction:column}
+.shot{width:100%;height:230px;object-fit:cover;object-position:top;background:var(--surface-2);border-bottom:1px solid var(--line);display:block}
+.shot.contain{object-fit:contain;padding:10px 0;background:#f8fafc}
+.card-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font-size:20px}
+.card p{font-size:14px;color:var(--soft);flex:1}
+.card .btn{align-self:flex-start}
+.links{display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
+.links a{color:var(--soft);font-weight:600}
+.links a:hover{color:var(--primary)}
+.badge{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:2px 9px;
+  background:#ecfdf5;color:#059669;border:1px solid #a7f3d0;margin-left:8px;vertical-align:2px}
+.badge.blue{background:#eff6ff;color:#2563eb;border-color:#bfdbfe}
+.info{margin-top:46px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+.panel h2{font-size:20px;margin-bottom:12px}
+.panel ul{margin:0;padding-left:20px;color:var(--soft);font-size:14px}
+.panel li{margin:6px 0}
+.panel .file-links{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600}
+.note{margin-top:14px;font-size:13px;color:var(--mute);line-height:1.8}
+footer{border-top:1px solid var(--line);background:rgba(255,255,255,.6)}
+.foot-inner{max-width:1120px;margin:0 auto;padding:22px;display:flex;gap:14px;justify-content:space-between;flex-wrap:wrap;
+  font-size:13px;color:var(--mute)}
+.foot-inner a{color:var(--soft)}
+@media(max-width:820px){
+  .hero h1{font-size:34px}
+  .grid,.info{grid-template-columns:1fr}
+  .nav-links{gap:12px;font-size:13px}
+  .wrap{padding-top:30px}
+}
+@media(max-width:560px){
+  .nav-inner{flex-wrap:wrap;gap:10px}
+  .nav-links{margin-left:0;width:100%;justify-content:space-between;gap:8px}
+  .hero h1{font-size:29px}
+  .shot{height:200px}
+}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="./"><span class="mark">⚡</span>安规刷题</a>
+    <nav class="nav-links">
+      <a href="web/">在线刷题</a>
+      <a href="download/quiz-search-1.0.2.apk">下载 App</a>
+      <a href="handbook/安规速记手册.pdf">速记手册</a>
+      <a href="import/">导入题库</a>
+      <a href="https://github.com/youyoudezhuzhu/angui-quiz">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="eyebrow">变电检修 · 安全规程</span>
+    <h1>一套题库，<span>四种用法</span></h1>
+    <p>119 道安规 / 变电检修题：网页刷题、安卓通知栏搜题、快速记忆手册、Excel 导入包，全部基于同一份题库。</p>
+    <div class="stats">
+      <div class="stat"><b>119</b><span>总题数</span></div>
+      <div class="stat"><b>103</b><span>单选题</span></div>
+      <div class="stat"><b>14</b><span>读图题</span></div>
+      <div class="stat"><b>2</b><span>问答题</span></div>
+    </div>
+    <div class="cta">
+      <a class="btn btn-primary" href="web/">开始刷题 →</a>
+      <a class="btn btn-ghost" href="download/quiz-search-1.0.2.apk">下载安卓 App</a>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <h2>四种用法</h2>
+    <p>题库同源 · 全部离线可用</p>
+  </div>
+
+  <section class="grid">
+    <article class="card">
+      <img class="shot" src="web/docs/screenshot.png" alt="在线刷题截图">
+      <div class="card-body">
+        <h3>在线刷题 <span class="badge blue">119 题</span></h3>
+        <p>题目/选项乱序、答案点击显示、上一题/下一题、按题型筛选、错题本、统计与进度保存；手机浏览器也能用。</p>
+        <a class="btn btn-primary" href="web/">进入刷题页 →</a>
+        <div class="links">
+          <a href="web/dist/变电检修刷题.html">离线单文件版</a>
+          <a href="web/README.md">网页说明</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="shot contain" src="android/docs/screenshot-result.png" alt="安卓通知栏搜题截图">
+      <div class="card-body">
+        <h3>安卓通知栏搜题 <span class="badge">52 KB</span></h3>
+        <p>下拉通知栏点「搜索」输入关键词，题目、选项、答案直接显示在通知里；长内容自动分页，全程不打开 App。</p>
+        <a class="btn btn-primary" href="download/quiz-search-1.0.2.apk">下载 APK（v1.0.2）</a>
+        <div class="links">
+          <a href="android/README.md">安装/使用说明</a>
+          <a href="https://github.com/youyoudezhuzhu/angui-quiz/releases/latest">GitHub Release</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="shot" src="handbook/安规速记卡.png" alt="速记卡" style="object-position:center top">
+      <div class="card-body">
+        <h3>快速记忆手册 <span class="badge blue">10 页 PDF</span></h3>
+        <p>驾考宝典式记忆法：看到关键词选什么、数字口诀、易混对比、考前 5 分钟速览，另附手机速记卡。</p>
+        <a class="btn btn-primary" href="handbook/安规速记手册.pdf">打开 PDF 手册 →</a>
+        <div class="links">
+          <a href="handbook/安规速记卡.png">保存速记卡</a>
+          <a href="handbook/安规速记手册.html">网页版</a>
+          <a href="handbook/安规速记手册.md">Markdown</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="shot" src="import/preview.png" alt="Excel 题库预览">
+      <div class="card-body">
+        <h3>题库导入包 <span class="badge">Excel / TXT</span></h3>
+        <p>按刷题 App 的导入格式生成：Excel 第一行 考题题目/考题答案/选项A-D，117 道选择题；TXT 为一行一个 JSON。</p>
+        <a class="btn btn-primary" href="import/安规题库_选择题_导入.xlsx">下载 Excel 题库 →</a>
+        <div class="links">
+          <a href="import/安规题库_选择题_导入.txt">TXT 格式</a>
+          <a href="import/安规题库导入包.zip">全部打包</a>
+          <a href="import/导入说明.md">格式说明</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="info">
+    <div class="panel">
+      <h2>题库与数据</h2>
+      <ul>
+        <li>119 道唯一题：单选 103 · 读图 14 · 问答 2。</li>
+        <li>源文件 125 条（xlsx 118 + xls 5 + doc 2），其中 6 条完全重复，去重后 119 条；xls 的 5 题都是 xlsx 读图题的副本。</li>
+        <li>网页、App、手册、导入包全部由同一份 <a href="data/questions.json">data/questions.json</a> 生成。</li>
+        <li>14 道读图题的原题配图缺失（源文件未附带图片），网页/App/手册中均有标注。</li>
+        <li>2 道问答题无法导入 Excel（该格式只支持 A-G 选择题），另附 <a href="import/问答题_参考答案.txt">参考答案</a>。</li>
+      </ul>
+      <p class="note">核对材料：<a href="docs/题库核对表.xlsx">125 条逐条核对表</a> ·
+        <a href="docs/核对说明.md">核对说明</a> ·
+        <a href="docs/数据独立校验.md">数据独立校验报告</a></p>
+    </div>
+    <div class="panel">
+      <h2>项目结构</h2>
+      <div class="file-links">
+        <a href="web/">web/ · 网页刷题（GitHub Pages）</a>
+        <a href="android/">android/ · 安卓搜题 App 源码</a>
+        <a href="handbook/">handbook/ · 速记手册 PDF / 速记卡</a>
+        <a href="import/">import/ · Excel / TXT 导入包</a>
+        <a href="data/questions.json">data/questions.json · 唯一题库数据</a>
+        <a href="README.md">README.md · 仓库说明</a>
+      </div>
+      <p class="note">旧的两个仓库（substation-quiz、quiz-search-android）已合并到本仓库；以后只维护这一个项目。</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <span>安规刷题 · 变电检修安全规程题库 · 119 题</span>
+    <span><a href="https://github.com/youyoudezhuzhu/angui-quiz">GitHub 仓库</a> · 仅作学习记忆辅助，以《变电安规》原文为准</span>
+  </div>
+</footer>
+</body>
+</html>

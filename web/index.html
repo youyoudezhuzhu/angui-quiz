@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="变电检修 · 安全规程刷题">
+<meta property="og:description" content="119 道变电检修安全规程题：单选 / 读图 / 问答，乱序练习、答案点击显示、进度统计。">
+<title>变电检修 · 安全规程刷题</title>
+<meta name="description" content="变电检修安全规程题库：单选题、读图题、问答题，支持乱序练习、答案点击显示、进度统计。">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">⚡</span>
+      <div class="brand-text">
+        <h1>变电检修 · 安全规程刷题</h1>
+        <p id="brand-sub">单选题 103 · 读图题 14 · 问答题 2</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button id="btn-stats" class="btn btn-ghost" type="button" title="查看统计"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 20V12M12 20V5M19 20v-6M3 20h18"/></svg><span>统计</span></button>
+      <button id="btn-theme" class="btn btn-icon" type="button" title="切换深色/浅色"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- 数据总览 -->
+  <section class="overview" aria-label="做题统计">
+    <div class="stat-card">
+      <span class="stat-label">已作答</span>
+      <strong class="stat-value"><span id="stat-answered">0</span><small id="stat-total">/119</small></strong>
+      <span class="stat-sub" id="stat-seen">已看答案 0</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">正确</span>
+      <strong class="stat-value ok" id="stat-correct">0</strong>
+      <span class="stat-sub" id="stat-accuracy">正确率 —</span>
+    </div>
+    <div class="stat-card warn">
+      <span class="stat-label">错误</span>
+      <strong class="stat-value bad" id="stat-wrong">0</strong>
+      <span class="stat-sub" id="stat-streak">连续答对 0</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">总进度</span>
+      <strong class="stat-value" id="stat-progress-pct">0%</strong>
+      <span class="stat-sub">已答 / 全部题目</span>
+    </div>
+    <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
+  </section>
+
+  <!-- 工具栏 -->
+  <section class="toolbar">
+    <nav class="tabs" id="tabs" aria-label="题型筛选">
+      <button class="tab active" data-filter="all" type="button">全部 <span class="tab-count" data-count="all">119</span></button>
+      <button class="tab" data-filter="single" type="button">单选题 <span class="tab-count" data-count="single">103</span></button>
+      <button class="tab" data-filter="image" type="button">读图题 <span class="tab-count" data-count="image">14</span></button>
+      <button class="tab" data-filter="essay" type="button">问答题 <span class="tab-count" data-count="essay">2</span></button>
+      <button class="tab" data-filter="wrong" type="button">错题 <span class="tab-count" data-count="wrong">0</span></button>
+    </nav>
+    <div class="toolbar-controls">
+      <label class="switch" title="开启后题目与选项都会随机打乱">
+        <input type="checkbox" id="toggle-shuffle" checked>
+        <span class="switch-track"><span class="switch-thumb"></span></span>
+        <span class="switch-label">乱序</span>
+      </label>
+      <button id="btn-reshuffle" class="btn btn-ghost" type="button" title="重新打乱题目与选项顺序"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>重新打乱</button>
+      <button id="btn-reset" class="btn btn-ghost danger" type="button" title="清空做题记录"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v5M14 11v5"/></svg>重置进度</button>
+    </div>
+  </section>
+
+  <!-- 题目卡片 -->
+  <article class="card" id="card" aria-live="polite">
+    <div class="card-head">
+      <div class="badges">
+        <span class="badge" id="q-category">单选题</span>
+        <span class="badge subtle" id="q-subcategory">专业</span>
+        <span class="badge warn" id="q-image-badge" hidden>配图缺失</span>
+      </div>
+      <span class="counter" id="q-counter">第 1 / 119 题</span>
+    </div>
+
+    <h2 class="stem" id="q-stem">正在加载题库…</h2>
+
+    <div class="image-area" id="q-image-area" hidden></div>
+
+    <ul class="options" id="q-options"></ul>
+
+    <div class="essay-hint" id="essay-hint" hidden>问答题：先在心里作答，点“显示答案”后对照参考答案自评。</div>
+
+    <div class="actions">
+      <button id="btn-prev" class="btn btn-nav" type="button">← 上一题</button>
+      <button id="btn-reveal" class="btn btn-primary" type="button">显示答案</button>
+      <button id="btn-next" class="btn btn-nav" type="button">下一题 →</button>
+    </div>
+    <section class="answer-panel" id="answer-panel" hidden>
+      <div class="answer-head">
+        <span class="answer-title" id="answer-title">正确答案</span>
+        <span class="answer-pill" id="answer-pill">A</span>
+        <span class="answer-verdict" id="answer-verdict"></span>
+      </div>
+      <div class="answer-text" id="answer-text"></div>
+      <div class="analysis" id="answer-analysis-box">
+        <h3>解析</h3>
+        <p id="answer-analysis"></p>
+      </div>
+      <div class="essay-grade" id="essay-grade" hidden>
+        <span>对照参考答案，自评：</span>
+        <button class="btn btn-ok" type="button" id="btn-self-correct"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>我答对了</button>
+        <button class="btn btn-bad" type="button" id="btn-self-wrong"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>没答对</button>
+      </div>
+      <div class="source-line" id="answer-source"></div>
+    </section>
+
+    <p class="kbd-hint">快捷键：← → 切题 · 空格 显示答案 · 数字 1–4 选项</p>
+  </article>
+
+  <footer class="foot">
+    <span>题库来源：变电检修（B）· 读图 5 选 2 · 问答题 2 选 1</span>
+    <span>共 <b id="foot-total">119</b> 题 · 纯静态页面 · 进度保存在本机浏览器</span>
+  </footer>
+</main>
+
+<!-- 统计弹窗 -->
+<dialog id="stats-dialog" class="dialog">
+  <div class="dialog-head">
+    <h2>学习统计</h2>
+    <button class="btn btn-icon" id="btn-close-stats" type="button" aria-label="关闭">✕</button>
+  </div>
+  <div class="dialog-body">
+    <div class="ring-row">
+      <div class="ring" id="ring" style="--pct:0">
+        <span id="ring-pct">0%</span>
+      </div>
+      <div class="ring-info">
+        <p><b id="dlg-answered">0</b> / <span id="dlg-total">119</span> 题已作答</p>
+        <p class="muted">正确 <b class="ok" id="dlg-correct">0</b> · 错误 <b class="bad" id="dlg-wrong">0</b> · 正确率 <b id="dlg-accuracy">—</b></p>
+        <p class="muted">已查看答案 <b id="dlg-seen">0</b> 题（含已作答）</p>
+      </div>
+    </div>
+    <table class="stats-table">
+      <thead><tr><th>题型</th><th>题量</th><th>已答</th><th>正确</th><th>错误</th><th>正确率</th></tr></thead>
+      <tbody id="stats-table-body"></tbody>
+    </table>
+    <p class="dialog-tip">提示：统计按“最近一次作答”记录；同一道题重复作答只保留最新结果。</p>
+  </div>
+  <div class="dialog-foot">
+    <button class="btn btn-ghost danger" id="btn-reset-2" type="button">清空所有记录</button>
+    <button class="btn btn-primary" id="btn-close-stats-2" type="button">知道了</button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="js/questions.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
